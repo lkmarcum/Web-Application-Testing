@@ -39,5 +39,18 @@ describe("<Display />", () => {
       fireEvent.click(ballButton);
       expect(comp.getByTestId("balls").textContent).toBe("0");
     });
+
+    it("increments the strike display correctly when foul ball button is clicked", () => {
+      const comp = render(<Display />);
+      const foulButton = comp.getByTestId("foul-button");
+      fireEvent.click(foulButton);
+      expect(comp.getByTestId("strikes").textContent).toBe("1");
+      fireEvent.click(foulButton);
+      expect(comp.getByTestId("strikes").textContent).toBe("2");
+      fireEvent.click(foulButton);
+      expect(comp.getByTestId("strikes").textContent).toBe("2");
+      fireEvent.click(foulButton);
+      expect(comp.getByTestId("strikes").textContent).toBe("2");
+    });
   });
 });
