@@ -52,5 +52,20 @@ describe("<Display />", () => {
       fireEvent.click(foulButton);
       expect(comp.getByTestId("strikes").textContent).toBe("2");
     });
+
+    it("resets count display when hit button is clicked", () => {
+      const comp = render(<Display />);
+      const hitButton = comp.getByTestId("hit-button");
+      const strikeButton = comp.getByTestId("strike-button");
+      const ballButton = comp.getByTestId("ball-button");
+      fireEvent.click(strikeButton);
+      fireEvent.click(strikeButton);
+      fireEvent.click(ballButton);
+      fireEvent.click(ballButton);
+      fireEvent.click(ballButton);
+      fireEvent.click(hitButton);
+      expect(comp.getByTestId("strikes").textContent).toBe("0");
+      expect(comp.getByTestId("balls").textContent).toBe("0");
+    });
   });
 });
