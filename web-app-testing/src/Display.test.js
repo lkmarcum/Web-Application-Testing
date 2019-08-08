@@ -10,9 +10,10 @@ describe("<Display />", () => {
     render(<Display />);
   });
 
-  it("displays the strikes", () => {
+  it("correctly displays the balls & strikes on first render", () => {
     const { getByTestId } = render(<Display />);
     expect(getByTestId("strikes").textContent).toBe("0");
+    expect(getByTestId("balls").textContent).toBe("0");
   });
 
   describe("button function calls in <Dashboard />", () => {
