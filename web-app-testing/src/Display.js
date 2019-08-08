@@ -1,14 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import Dashboard from "./Dashboard";
 
 function Display() {
   const [count, setCount] = useState({ strikes: 0, balls: 0 });
 
   function addStrike() {
-    setCount({ strikes: strikes + 1, balls: balls });
+    if (count.strikes === 2) {
+      resetCount();
+    } else {
+      const tempStrike = count.strikes;
+      const tempBalls = count.balls;
+      setCount({ strikes: tempStrike + 1, balls: tempBalls });
+    }
   }
 
   function addBall() {
-    setCount({ strikes: strikes, balls: balls + 1 });
+    if (count.balls === 3) {
+      resetCount();
+    } else {
+      const tempStrike = count.strikes;
+      const tempBalls = count.balls;
+      setCount({ strikes: tempStrike, balls: tempBalls + 1 });
+    }
   }
 
   function resetCount() {
@@ -16,23 +29,41 @@ function Display() {
   }
 
   function foulBall() {
-    setCount({ strikes: strikes + 1, balls: balls });
+    if (count.strikes === 2) {
+      return;
+    } else {
+      const tempStrike = count.strikes;
+      const tempBalls = count.balls;
+      setCount({ strikes: tempStrike + 1, balls: tempBalls });
+    }
   }
 
   return (
-    <div className="display">
-      <h1>At-Bat Count</h1>
-      <div className="count-container">
-        <div className="ball-container">
-          <h3>Balls</h3>
-          <p>{count.balls}</p>
+    <div>
+      <div className="display-container">
+        <h1>At-Bat Count</h1>
+        <div className="count-container">
+          <div className="ball-container">
+            <h3>Balls</h3>
+            <p>{count.balls}</p>
+          </div>
+          <p>-</p>
+          <div className="strike-container">
+            <h3>Strikes</h3>
+            <p>{count.strikes}</p>
+          </div>
         </div>
-        <p>-</p>
-        <div className="strike-container">
-          <h3>Strikes</h3>
-          <p>{count.strikes}</p>
-        </div>
+      </div>
+      <div className="dashboard-container">
+        <Dashboard
+          addStrike={addStrike}
+          addBall={addBall}
+          resetCount={resetCount}
+          foulBall={foulBall}
+        />
       </div>
     </div>
   );
 }
+
+export default Display;
