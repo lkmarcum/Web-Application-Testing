@@ -8,9 +8,7 @@ function Display() {
     if (count.strikes === 2) {
       resetCount();
     } else {
-      const tempStrike = count.strikes;
-      const tempBalls = count.balls;
-      setCount({ strikes: tempStrike + 1, balls: tempBalls });
+      setCount({ strikes: count.strikes + 1, balls: count.balls });
     }
   }
 
@@ -18,9 +16,7 @@ function Display() {
     if (count.balls === 3) {
       resetCount();
     } else {
-      const tempStrike = count.strikes;
-      const tempBalls = count.balls;
-      setCount({ strikes: tempStrike, balls: tempBalls + 1 });
+      setCount({ strikes: count.strikes, balls: count.balls + 1 });
     }
   }
 
@@ -32,9 +28,7 @@ function Display() {
     if (count.strikes === 2) {
       return;
     } else {
-      const tempStrike = count.strikes;
-      const tempBalls = count.balls;
-      setCount({ strikes: tempStrike + 1, balls: tempBalls });
+      setCount({ strikes: count.strikes + 1, balls: count.balls });
     }
   }
 
