@@ -7,8 +7,10 @@ function Display() {
   function addStrike() {
     if (count.strikes === 2) {
       resetCount();
+      return count;
     } else {
       setCount({ strikes: count.strikes + 1, balls: count.balls });
+      return count;
     }
   }
 
@@ -39,12 +41,12 @@ function Display() {
         <div className="count-container">
           <div className="ball-container">
             <h3>Balls</h3>
-            <p>{count.balls}</p>
+            <p data-testid="balls">{count.balls}</p>
           </div>
           <p>-</p>
           <div className="strike-container">
             <h3>Strikes</h3>
-            <p>{count.strikes}</p>
+            <p data-testid="strikes">{count.strikes}</p>
           </div>
         </div>
       </div>
