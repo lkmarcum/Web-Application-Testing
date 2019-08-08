@@ -2,8 +2,6 @@ import React from "react";
 import Display from "./Display";
 import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/react/cleanup-after-each";
-import { cyanBright } from "ansi-colors";
-// import "jest-dom/extend-expect";
 
 describe("<Display />", () => {
   it("renders without crashing", () => {
